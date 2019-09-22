@@ -6,7 +6,9 @@ def readable_duration(seconds)
   return print_seconds(no_of_seconds) if seconds < 60
 
   if no_of_hours > 0
-    if no_of_minutes > 0
+    if no_of_minutes > 0 && no_of_seconds > 0
+      "#{print_hours(no_of_hours)}, #{print_minutes(no_of_minutes)} and #{print_seconds(no_of_seconds)}"
+    elsif no_of_minutes > 0 && no_of_seconds == 0
       "#{print_hours(no_of_hours)} and #{print_minutes(no_of_minutes)}"
     else
       "#{print_hours(no_of_hours)}"

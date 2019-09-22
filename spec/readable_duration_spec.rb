@@ -32,4 +32,8 @@ describe '#readable_duration' do
   it 'handles 1 hour and 2 minutes' do
     expect(readable_duration(3720)).to eq("1 hour and 2 minutes")
   end
+
+  it 'handles 1 hour, 1 minute and 2 seconds' do
+    expect(readable_duration(3662)).to eq("1 hour, 1 minute and 2 seconds")
+  end
 end
