@@ -12,4 +12,8 @@ describe '#readable_duration' do
   it 'Handles 62 seconds correctly' do
     expect(readable_duration(62)).to eq("1 minute and 2 seconds")
   end
+
+  it 'handles 61 seconds correctly' do
+    expect(readable_duration(61)).to eq("1 minute and 1 second")
+  end
 end
