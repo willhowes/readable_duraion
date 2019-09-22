@@ -1,8 +1,11 @@
 def readable_duration(seconds)
   remaining_seconds = seconds % 60
   no_of_minutes = seconds / 60
+  no_of_hours = seconds / 3600
 
   return handle_seconds(remaining_seconds) if seconds < 60
+
+  return "1 hour" if no_of_hours == 1
 
   if remaining_seconds > 0
     "#{handle_minutes(no_of_minutes)} and #{handle_seconds(remaining_seconds)}"
