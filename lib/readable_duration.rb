@@ -1,9 +1,11 @@
+YEAR_SECONDS = 31536000
 DAY_SECONDS = 86400
 HOUR_SECONDS = 3600
 MINUTE_SECONDS = 60
 
 def readable_duration(seconds)
-  array_for_printing = [print_unit(seconds / DAY_SECONDS, "day"),
+  array_for_printing = [print_unit(seconds / YEAR_SECONDS, "year"),
+                        print_unit(seconds % YEAR_SECONDS / DAY_SECONDS, "day"),
                         print_unit(seconds % DAY_SECONDS / HOUR_SECONDS, "hour"),
                         print_unit(seconds % HOUR_SECONDS / MINUTE_SECONDS, "minute"),
                         print_unit(seconds % HOUR_SECONDS % MINUTE_SECONDS % MINUTE_SECONDS, "second")]
