@@ -1,3 +1,4 @@
 def readable_duration(seconds)
-  "1 second"
+  return "#{seconds} second" if seconds == 1
+  "#{seconds} seconds"
 end
