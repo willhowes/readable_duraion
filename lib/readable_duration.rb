@@ -1,25 +1,9 @@
 def readable_duration(seconds)
-  no_of_seconds = seconds % 60
-  no_of_minutes = seconds % 3600 / 60
-  no_of_hours = seconds / 3600
-
-  return print_seconds(no_of_seconds) if seconds < 60
-
-  if no_of_hours > 0
-    if no_of_minutes > 0 && no_of_seconds > 0
-      "#{print_hours(no_of_hours)}, #{print_minutes(no_of_minutes)} and #{print_seconds(no_of_seconds)}"
-    elsif no_of_minutes > 0 && no_of_seconds == 0
-      "#{print_hours(no_of_hours)} and #{print_minutes(no_of_minutes)}"
-    else
-      "#{print_hours(no_of_hours)}"
-    end
-  else
-    if no_of_seconds > 0
-      "#{print_minutes(no_of_minutes)} and #{print_seconds(no_of_seconds)}"
-    else
-      "#{print_minutes(no_of_minutes)}"
-    end
-  end
+  array_for_printing = [print_hours(seconds / 3600),
+                        print_minutes(seconds % 3600 / 60),
+                        print_seconds(seconds % 3600 % 60 % 60)]
+  array_for_printing.reject!(&:empty?)
+  return handle_printing(array_for_printing)
 end
 
 private
@@ -27,23 +11,40 @@ private
 def print_seconds(no_of_seconds)
   if no_of_seconds == 1
     "#{no_of_seconds} second"
-  else
+  elsif no_of_seconds > 1
     "#{no_of_seconds} seconds"
+  else
+    ""
   end
 end
 
 def print_minutes(no_of_minutes)
   if no_of_minutes == 1
     "#{no_of_minutes} minute"
-  else
+  elsif no_of_minutes > 1
     "#{no_of_minutes} minutes"
+  else
+    ""
   end
 end
 
 def print_hours(no_of_hours)
   if no_of_hours == 1
     "#{no_of_hours} hour"
-  else
+  elsif no_of_hours > 1
     "#{no_of_hours} hours"
+  else
+    ""
+  end
+end
+
+def handle_printing(array_for_printing)
+  case array_for_printing.length
+  when 3
+    "#{array_for_printing[0]}, #{array_for_printing[1]} and #{array_for_printing[2]}"
+  when 2
+    "#{array_for_printing[0]} and #{array_for_printing[1]}"
+  when 1
+    "#{array_for_printing[0]}"
   end
 end
