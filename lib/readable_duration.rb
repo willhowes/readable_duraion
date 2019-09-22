@@ -1,5 +1,6 @@
 def readable_duration(seconds)
-  array_for_printing = [print_unit(seconds / 3600, "hour"),
+  array_for_printing = [print_unit(seconds / 86400, "day"),
+                        print_unit(seconds % 86400 / 3600, "hour"),
                         print_unit(seconds % 3600 / 60, "minute"),
                         print_unit(seconds % 3600 % 60 % 60, "second")]
   array_for_printing.reject!(&:empty?)
