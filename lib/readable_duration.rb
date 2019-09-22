@@ -28,6 +28,10 @@ end
 def handle_printing(array_for_printing)
   case array_for_printing.length
 
+  when 5
+    "#{array_for_printing[0]}, #{array_for_printing[1]}, "\
+    "#{array_for_printing[2]}, #{array_for_printing[3]} and "\
+    "#{array_for_printing[4]}"
   when 4
     "#{array_for_printing[0]}, #{array_for_printing[1]}, "\
     "#{array_for_printing[2]} and #{array_for_printing[3]}"
