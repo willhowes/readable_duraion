@@ -55,6 +55,9 @@ describe '#readable_duration' do
 
   it 'handles 1 year, 2 days, 2 minutes and 2 seconds' do
     expect(readable_duration(31716122)).to eq('1 year, 2 days, 2 hours, 2 minutes and 2 seconds')
+  end
 
+  it 'returns "now" if 0 given' do
+    expect(readable_duration(0)).to eq('now')
   end
 end

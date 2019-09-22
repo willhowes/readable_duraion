@@ -26,6 +26,7 @@ def print_unit(no_of_units, unit_type)
 end
 
 def handle_printing(array_for_printing)
+  return 'now' if array_for_printing.empty?
   if array_for_printing.length > 1
     final_print = []
     array_for_printing.each_with_index do |unit_to_print, index|
