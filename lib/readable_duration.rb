@@ -26,20 +26,23 @@ def print_unit(no_of_units, unit_type)
 end
 
 def handle_printing(array_for_printing)
-  case array_for_printing.length
+  if array_for_printing.length > 1
+    final_print = []
+    array_for_printing.each_with_index do |unit_to_print, index|
+      case index
 
-  when 5
-    "#{array_for_printing[0]}, #{array_for_printing[1]}, "\
-    "#{array_for_printing[2]}, #{array_for_printing[3]} and "\
-    "#{array_for_printing[4]}"
-  when 4
-    "#{array_for_printing[0]}, #{array_for_printing[1]}, "\
-    "#{array_for_printing[2]} and #{array_for_printing[3]}"
-  when 3
-    "#{array_for_printing[0]}, #{array_for_printing[1]} and #{array_for_printing[2]}"
-  when 2
-    "#{array_for_printing[0]} and #{array_for_printing[1]}"
-  when 1
+      when array_for_printing.length - 2
+        final_print << "#{unit_to_print} and "
+
+      when array_for_printing.length - 1
+        final_print << "#{unit_to_print}"
+
+      else
+        final_print << "#{unit_to_print}, "
+      end
+    end
+    final_print.join('')
+  else
     "#{array_for_printing[0]}"
   end
 end
